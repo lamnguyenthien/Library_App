@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/formCard"
+    android:background="@drawable/lavender_border"
+    android:layout_marginTop="8dp">
+
+    <TextView
+        android:id="@+id/tv_book_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tên sách: "
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:padding="6dp"/>
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Họ tên: "
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:padding="6dp"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:padding="6dp">
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Code: "
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/tv_form_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Trạng thái: "
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:padding="6dp">
+        <TextView
+            android:id="@+id/tv_quality"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Số lượng: "
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tổng tiền: "
+            android:textSize="13sp"/>
+    </TableRow>
+
+    <TextView
+        android:id="@+id/tv_regis_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ngày đăng ký: "
+        android:textSize="13sp"
+        android:padding="6dp"/>
+
+    <TableRow
+        android:id="@+id/tableRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:padding="6dp">
+        <TextView
+            android:id="@+id/tv_receive_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ngày nhận:"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/tv_return_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ngày trả: "
+            android:textSize="13sp"/>
+    </TableRow>
+
+    <Button
+        android:id="@+id/btnChangeStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"/>
+</LinearLayout>

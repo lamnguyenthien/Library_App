@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/formregis"
+        android:title="Đơn đăng ký"
+        android:icon="@drawable/baseline_edit_document_24"/>
+
+    <item
+        android:id="@+id/findbook"
+        android:title="Tìm sách"
+        android:icon="@drawable/baseline_menu_book_24"/>
+
+    <item
+        android:id="@+id/account"
+        android:title="Tài khoản"
+        android:icon="@drawable/baseline_account_box_24"/>
+</menu>

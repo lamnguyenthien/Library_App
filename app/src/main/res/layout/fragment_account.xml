@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.AccountFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thông tin tài khoản"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/lavender"
+            android:textStyle="bold"/>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Code: "
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/edit_code"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="3"
+                android:background="@drawable/lavender_border"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Họ tên: "
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/edit_fullname"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="3"
+                android:background="@drawable/lavender_border"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Email: "
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/edit_email"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="3"
+                android:background="@drawable/lavender_border"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingLeft="8dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="4"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Chức vụ: "
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/edit_role"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="3"
+                android:background="@drawable/lavender_border"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingLeft="8dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:id="@+id/btn_update_acc"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="Cập nhật thông tin"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/btn_change_pass"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="Thay đổi mật khẩu"
+                android:layout_marginLeft="5dp"/>
+        </TableRow>
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Đăng xuất"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</FrameLayout>

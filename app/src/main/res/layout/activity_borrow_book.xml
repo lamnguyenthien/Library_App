@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BorrowBookActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đơn mượn sách"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:textColor="@color/lavender"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvt_stu_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sinh Viên: "
+            android:textColor="@color/lavender"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/tvt_stu_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MSV: "
+            android:textColor="@color/lavender"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:textSize="20dp"/>
+        <TextView
+            android:id="@+id/tvt_b_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tên sách: "
+            android:textColor="@color/lavender"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/tvt_b_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tác giả: "
+            android:textColor="@color/lavender"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:textSize="20dp"/>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tvt_b_publish_comp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="NXB: "
+                android:textColor="@color/lavender"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/tvt_b_publish_year"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Năm: "
+                android:textColor="@color/lavender"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:textSize="20dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/tvt_book_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:text="Giá: VND"
+                android:textColor="@color/lavender"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/tvt_quality"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:text="Số lượng: "
+                android:textColor="@color/lavender"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/edit_quality"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.6"
+                android:inputType="number"
+                android:paddingLeft="15dp"
+                android:background="@drawable/lavender_border"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tiền ứng: "
+                android:textColor="@color/lavender"
+                android:textSize="20dp"/>
+
+            <EditText
+                android:id="@+id/edit_total"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1.5"
+                android:background="@drawable/lavender_border"
+                android:paddingLeft="15dp"
+                android:inputType="none"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="10dp"
+                android:text="VND"
+                android:textColor="@color/lavender"
+                android:textSize="20dp"
+                />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Đăng ký ngày nhận: "
+                android:textColor="@color/lavender"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/btn_receive_date"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Chọn ngày"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Đăng ký ngày trả: "
+                android:textColor="@color/lavender"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/btn_return_date"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Chọn ngày"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/btnBorrowBook"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Mượn sách"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="Hủy bỏ"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"/>
+        </TableRow>
+    </LinearLayout>
+
+</ScrollView>

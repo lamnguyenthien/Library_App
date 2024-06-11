@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="formstatus">
+        <item>Chờ nhận</item>
+        <item>Đã nhận</item>
+        <item>Đã trả</item>
+    </string-array>
+</resources>
