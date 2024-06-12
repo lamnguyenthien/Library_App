@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,9 +37,9 @@ public class RegisFormFragment extends Fragment {
     FormAdapter adapter;
     private int id_user;
     ArrayAdapter arrayAdapter = null;
-
     UserDAO userDAO;
     FormDAO formDAO;
+    int fil = 1;
 
 
     @Override
@@ -110,6 +111,7 @@ public class RegisFormFragment extends Fragment {
         binding.btnBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fil = 2;
                 adapter.changDataList(buyFormList);
                 binding.tablerowStatus.setVisibility(View.GONE);
             }
@@ -118,6 +120,7 @@ public class RegisFormFragment extends Fragment {
         binding.btnBorrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fil = 3;
                 adapter.changDataList(borrowFormList);
                 binding.tablerowStatus.setVisibility(View.VISIBLE);
             }
@@ -126,10 +129,48 @@ public class RegisFormFragment extends Fragment {
         binding.btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fil = 1;
                 adapter.changDataList(formList);
                 binding.tablerowStatus.setVisibility(View.GONE);
             }
         });
+
+        binding.searchForm.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchListForm(newText);
+                return true;
+            }
+        });
+    }
+
+    private void searchListForm(String text) {
+        ArrayList<Form> searchList = new ArrayList<>();
+        if(fil == 1) {
+            for(Form form:formList) {
+                if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
+                    searchList.add(form);
+                }
+            }
+        }else if(fil == 2) {
+            for(Form form:buyFormList) {
+                if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
+                    searchList.add(form);
+                }
+            }
+        }else if(fil==3) {
+            for(Form form:borrowFormList) {
+                if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
+                    searchList.add(form);
+                }
+            }
+        }
+        adapter.changDataList(searchList);
     }
 
     public void filterListStatus(String status) {

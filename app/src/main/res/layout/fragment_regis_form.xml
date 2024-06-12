@@ -51,10 +51,26 @@
                 android:text="Đơn mượn"/>
         </TableRow>
 
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_below="@+id/tablerow_filter"
+            android:id="@+id/search_form"
+            app:iconifiedByDefault="false"
+            app:searchHintIcon="@null"
+            app:queryHint="Tìm kiếm đơn"
+            android:focusable="false"
+            app:closeIcon="@drawable/baseline_clear_24"
+            app:searchIcon="@drawable/baseline_search_24"
+            android:background="@drawable/lavender_border"/>
+
         <TableRow
             android:id="@+id/tablerow_status"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/tablerow_filter"
+            android:layout_below="@+id/search_form"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:gravity="center"

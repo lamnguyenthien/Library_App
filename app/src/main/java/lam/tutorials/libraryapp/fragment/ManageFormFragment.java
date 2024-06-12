@@ -189,9 +189,7 @@ public class ManageFormFragment extends Fragment {
             for(Form form:formList) {
                 if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
                     searchList.add(form);
-                    Log.d("Test_fil1","Add");
                 }
-                Log.d("Test_fil1","Hello");
             }
         }else if(fil == 2) {
             for(Form form:buyFormList) {
