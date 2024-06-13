@@ -35,14 +35,13 @@
                 android:textColor="@color/lavender"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
-            <EditText
-                android:id="@+id/edit_code"
+            <TextView
+                android:id="@+id/tvt_code"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:background="@drawable/lavender_border"
-                android:textSize="16dp"
-                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textColor="@color/lavender"
                 android:paddingLeft="8dp"/>
         </TableRow>
 
@@ -107,15 +106,15 @@
                 android:textColor="@color/lavender"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
-            <EditText
-                android:id="@+id/edit_role"
+            <TextView
+                android:id="@+id/tvt_role"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:background="@drawable/lavender_border"
-                android:textSize="16dp"
-                android:textColor="@color/black"
-                android:paddingLeft="8dp" />
+                android:textSize="18dp"
+                android:textColor="@color/lavender"
+
+                android:paddingLeft="8dp"/>
         </TableRow>
 
         <TableRow
@@ -140,6 +139,14 @@
                 android:text="Thay đổi mật khẩu"
                 android:layout_marginLeft="5dp"/>
         </TableRow>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Thêm tài khoản sinh viên"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/btn_logout"

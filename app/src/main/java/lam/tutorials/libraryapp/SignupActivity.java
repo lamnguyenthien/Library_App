@@ -56,26 +56,7 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this,"Đăng ký không thành công",Toast.LENGTH_LONG).show();
                                 }else {
                                     Toast.makeText(SignupActivity.this,"Đăng ký thành công",Toast.LENGTH_LONG).show();
-                                    nUser = new User("2021604260", "tranduchuy@gmail.com", "Trần Đức Huy", "Student", "123456",1);
-                                    userDAO.insertUser(nUser);
-                                    nUser = new User("2021604261", "dohavi@gmail.com", "Đỗ Hà Vi", "Student", "123456",1);
-                                    userDAO.insertUser(nUser);
-                                    nUser = new User("2021604263", "nguyenminhhieu@gmail.com", "Nguyễn Minh Hiếu", "Student", "123456",1);
-                                    userDAO.insertUser(nUser);
-                                    nUser = new User("2021604264", "trinhgialoc@gmail.com", "Trịnh Gia Lộc", "Student", "123456",1);
-                                    userDAO.insertUser(nUser);
-                                    nUser = new User("GV_01", "hoangquanghuy@gmail.com", "Hoàng Quang Huy", "Teacher", "123456",1);
-                                    userDAO.insertUser(nUser);
-                                    nUser = new User("GV_02", "vuthiduong@gmail.com", "Vũ Thị Dương", "Teacher", "123456",1);
-                                    userDAO.insertUser(nUser);
-                                    Book nBook = new Book("Nguyên lý hệ điều hành", "Nguyễn Bá Nghiễn", "2020", "Kim Đồng",22, 20, 2, "Khoa học", "Giáo trình", "CNTT",20000,1);
-                                    bookDAO.insertBook(nBook);
-                                    nBook = new Book("Phát triển ứng dụng di động", "Nguyễn Bá Nghiễn", "2022", "Thống kê",22, 22, 2, "Khoa học", "Giáo trình", "CNTT",20000,1);
-                                    bookDAO.insertBook(nBook);
-                                    nBook = new Book("Giàu từ chứng khoán", "John Boik", "2016", "Lao động",22, 22, 2, "Kinh tế", "Sách", "Không",79000,1);
-                                    bookDAO.insertBook(nBook);
-                                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                                    startActivity(intent);
+                                    finish();
                                 }
                             }
                         }
@@ -85,12 +66,13 @@ public class SignupActivity extends AppCompatActivity {
                 }
             }
         });
-        binding.loginRedirectText.setOnClickListener(new View.OnClickListener() {
+
+        binding.signupBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                finish();
             }
         });
+
     }
 }

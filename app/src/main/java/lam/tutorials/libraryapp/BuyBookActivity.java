@@ -38,23 +38,19 @@ public class BuyBookActivity extends AppCompatActivity {
         formDAO = new FormDAO(getApplicationContext());
 
         Intent intent = getIntent();
-        int id_student = intent.getIntExtra("id_student", 0);
         int id_book = intent.getIntExtra("id_book",0);
-        User student = userDAO.getUserByID(id_student);
         Book book = bookDAO.getBookByID(id_book);
 
-        binding.tvtStuName.setText("Họ tên: " + student.getFullname());
-        binding.tvtStuCode.setText("MSV: " + student.getCode());
         binding.tvtBName.setText("Tên sách: " + book.getName());
         binding.tvtBAuthor.setText("Tác giả: " + book.getAuthor());
         binding.tvtBPublishComp.setText("NXB: " + book.getPublish_comp());
         binding.tvtBPublishYear.setText("Năm: " + book.getPublish_date());
-        //binding.tvtBCategory.setText("Thể loại: " + book.getCategory());
-        //binding.tvtBType.setText("Loại: " + book.getType());
-        //binding.tvtBFaculty.setText("Ngành: " + book.getFaculty());
+        binding.tvtBCategory.setText("Thể loại: " + book.getCategory());
+        binding.tvtBType.setText("Loại: " + book.getType());
+        binding.tvtBFaculty.setText("Ngành: " + book.getFaculty());
         binding.tvtBookPrice.setText("Giá: " + book.getPrice() + " VND");
 
-        /**binding.editQuality.addTextChangedListener(new TextWatcher() {
+        binding.editQuality.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -68,11 +64,11 @@ public class BuyBookActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 try {
-                    int quality = Integer.parseInt(binding.editQuality.getText().toString());
-                    if(quality > book.getQuality_stock()) {
-                        Toast.makeText(getApplicationContext(), "Thư viện không đủ số lượng sách", Toast.LENGTH_SHORT).show();
+                    int quantity = Integer.parseInt(binding.editQuality.getText().toString());
+                    if(quantity > book.getAvailableForSale()) {
+                        Toast.makeText(getApplicationContext(), "Thư viện không đủ số lượng sách bán", Toast.LENGTH_SHORT).show();
                     }else{
-                        long total = quality * book.getPrice();
+                        long total = quantity * book.getPrice();
                         binding.editTotal.setText(String.valueOf(total));
                     }
                 }catch (Exception e) {
@@ -87,19 +83,19 @@ public class BuyBookActivity extends AppCompatActivity {
                 if(binding.editQuality.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập số lượng hợp lệ", Toast.LENGTH_SHORT).show();
                 }else{
-                    int quality = Integer.parseInt(binding.editQuality.getText().toString());
+                    int quantity = Integer.parseInt(binding.editQuality.getText().toString());
                     Book cbook = bookDAO.getBookByID(id_book);
-                    if(quality > cbook.getQuality_stock()) {
-                        Toast.makeText(getApplicationContext(), "Thư viện không đủ số lượng sách", Toast.LENGTH_SHORT).show();
+                    if(quantity > cbook.getAvailableForSale()) {
+                        Toast.makeText(getApplicationContext(), "Thư viện không đủ số lượng sách bn", Toast.LENGTH_SHORT).show();
                     }else{
-                        long total = quality * cbook.getPrice();
+                        long total = quantity * cbook.getPrice();
                         //Calendar calendar = Calendar.getInstance();
                         Date date = new Date();
                         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                         String currentDate = dateFormat.format(date);
-                        Form buyform = new Form(id_book, id_student,"BuyForm" , "Đã bán", currentDate, null,null, quality, total);
-                        int stock = cbook.getQuality_stock() - quality;
-                        cbook.setQuality_stock(stock);
+                        Form buyform = new Form(id_book, -1,"" , "BuyForm","Đã bán" , currentDate,null, quantity, total);
+                        int stock = cbook.getAvailableForSale() - quantity;
+                        cbook.setAvailableForSale(stock);
                         bookDAO.updateBook(cbook);
                         long new_id = formDAO.insertForm(buyform);
                         if(new_id < 0) {
@@ -121,6 +117,6 @@ public class BuyBookActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
-        });*/
+        });
     }
 }

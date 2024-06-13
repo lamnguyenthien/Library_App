@@ -52,8 +52,6 @@ public class ManageFormFragment extends Fragment {
     private int id_user;
     ArrayAdapter arrayAdapter = null;
     private int fil =1;
-
-
     UserDAO userDAO;
     FormDAO formDAO;
 
@@ -81,7 +79,6 @@ public class ManageFormFragment extends Fragment {
 
         userDAO = new UserDAO(getContext());
         formDAO = new FormDAO(getContext());
-
         User u = userDAO.getUserByID(id_user);
         String role = u.getRole();
 
@@ -91,6 +88,7 @@ public class ManageFormFragment extends Fragment {
         formList = formDAO.getAllForms();
         buyFormList = formDAO.getAllFormsByType("BuyForm");
         borrowFormList = formDAO.getAllFormsByType("BorrowForm");
+
         Collections.reverse(formList);
         Collections.reverse(buyFormList);
         Collections.reverse(borrowFormList);

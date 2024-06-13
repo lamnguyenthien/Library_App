@@ -39,7 +39,6 @@ public class RegisFormFragment extends Fragment {
     ArrayAdapter arrayAdapter = null;
     UserDAO userDAO;
     FormDAO formDAO;
-    int fil = 1;
 
 
     @Override
@@ -74,17 +73,14 @@ public class RegisFormFragment extends Fragment {
         buyFormList = new ArrayList<>();
         borrowFormList = new ArrayList<>();
         formList = formDAO.getAllFormsByIdUser(id_user);
-        buyFormList = formDAO.getAllFormsByIdUserType(id_user,"BuyForm");
-        borrowFormList = formDAO.getAllFormsByIdUserType(id_user,"BorrowForm");
+        //buyFormList = formDAO.getAllFormsByIdUserType(id_user,"BuyForm");
+        //borrowFormList = formDAO.getAllFormsByIdUserType(id_user,"BorrowForm");
         Collections.reverse(formList);
-        Collections.reverse(buyFormList);
-        Collections.reverse(borrowFormList);
+        //Collections.reverse(buyFormList);
+        //Collections.reverse(borrowFormList);
 
         adapter = new FormAdapter(getContext(),formList,id_user,role);
         binding.recyclerView.setAdapter(adapter);
-
-        binding.tablerowStatus.setVisibility(View.GONE);
-
 
         arrayAdapter = ArrayAdapter.createFromResource(getContext(), R.array.formstatusfilter, android.R.layout.simple_spinner_item);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -97,7 +93,7 @@ public class RegisFormFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String status = (String) parent.getItemAtPosition(position);
                 if(status.equals("Tất cả")) {
-                    adapter.changDataList(borrowFormList);
+                    adapter.changDataList(formList);
                 }else{
                     filterListStatus(status);
                 }
@@ -105,33 +101,6 @@ public class RegisFormFragment extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-
-        binding.btnBuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fil = 2;
-                adapter.changDataList(buyFormList);
-                binding.tablerowStatus.setVisibility(View.GONE);
-            }
-        });
-
-        binding.btnBorrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fil = 3;
-                adapter.changDataList(borrowFormList);
-                binding.tablerowStatus.setVisibility(View.VISIBLE);
-            }
-        });
-
-        binding.btnAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fil = 1;
-                adapter.changDataList(formList);
-                binding.tablerowStatus.setVisibility(View.GONE);
             }
         });
 
@@ -151,23 +120,9 @@ public class RegisFormFragment extends Fragment {
 
     private void searchListForm(String text) {
         ArrayList<Form> searchList = new ArrayList<>();
-        if(fil == 1) {
-            for(Form form:formList) {
-                if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
-                    searchList.add(form);
-                }
-            }
-        }else if(fil == 2) {
-            for(Form form:buyFormList) {
-                if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
-                    searchList.add(form);
-                }
-            }
-        }else if(fil==3) {
-            for(Form form:borrowFormList) {
-                if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
-                    searchList.add(form);
-                }
+        for(Form form:formList) {
+            if(form.getCode().toLowerCase().contains(text.toLowerCase())) {
+                searchList.add(form);
             }
         }
         adapter.changDataList(searchList);
@@ -175,7 +130,7 @@ public class RegisFormFragment extends Fragment {
 
     public void filterListStatus(String status) {
         ArrayList<Form> filterListStatus = new ArrayList<>();
-        for(Form form:borrowFormList) {
+        for(Form form:formList) {
             if(form.getStatus().toLowerCase().equals(status.toLowerCase())) {
                 filterListStatus.add(form);
             }

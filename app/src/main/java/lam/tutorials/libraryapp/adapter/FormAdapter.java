@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import lam.tutorials.libraryapp.R;
@@ -50,10 +52,9 @@ public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
         holder.tvStatus.setText("Trạng thái: " + formlist.get(position).getStatus());
         holder.tvQuality.setText("Số lượng: " + formlist.get(position).getQuantity());
         holder.tvCode.setText("Code: " + formlist.get(position).getCode());
+        holder.tvUserName.setVisibility(View.GONE);
         if(role.equals("Student")) {
-            holder.tvUserName.setVisibility(View.GONE);
             holder.btnChangeStatus.setVisibility(View.GONE);
-
             if(formlist.get(position).getType().equals("BuyForm")) {
                 holder.tvRegisDate.setText("Ngày mua: " + formlist.get(position).getRegis_date());
                 holder.tvTotal.setText("Tổng tiền: " + formlist.get(position).getTotal() + " VND");
@@ -65,14 +66,13 @@ public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
                 holder.tvReturnDate.setText("Ngày trả: " + formlist.get(position).getReturn_date());
             }
         }else {
-            holder.tvUserName.setText(getNameById(formlist.get(position).getId_user(),context));
             holder.btnChangeStatus.setVisibility(View.GONE);
-
             if(formlist.get(position).getType().equals("BuyForm")) {
                 holder.tvRegisDate.setText("Ngày mua: " + formlist.get(position).getRegis_date());
                 holder.tvTotal.setText("Tổng tiền: " + formlist.get(position).getTotal() + " VND");
                 holder.tableRow.setVisibility(View.GONE);
             }else if (formlist.get(position).getType().equals("BorrowForm")){
+                holder.tvUserName.setText(getNameById(formlist.get(position).getId_user(),context));
                 holder.tableRow.setVisibility(View.VISIBLE);
                 holder.tvTotal.setText("Tiền ứng: " + formlist.get(position).getTotal() + " VND");
                 holder.tvRegisDate.setText("Ngày đăng ký: " + formlist.get(position).getRegis_date());
@@ -98,6 +98,11 @@ public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
                     formDAO.updateForm(cform);
                     notifyDataSetChanged();
                 }else if(cform.getStatus().equals("Đã nhận")) {
+                    Date date = new Date();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd_MM_yyyy");
+                    String currentDate = dateFormat.format(date);
+
+                    cform.setReturn_date(currentDate);
                     cform.setStatus("Đã trả");
                     formDAO.updateForm(cform);
                     notifyDataSetChanged();
@@ -147,7 +152,6 @@ class MyFormViewHolder extends RecyclerView.ViewHolder {
         tvCode = itemView.findViewById(R.id.tv_code);
         tableRow = itemView.findViewById(R.id.tableRow);
         btnChangeStatus = itemView.findViewById(R.id.btnChangeStatus);
-
         formCard = itemView.findViewById(R.id.formCard);
     }
 }

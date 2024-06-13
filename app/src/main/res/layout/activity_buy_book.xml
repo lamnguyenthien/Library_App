@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đơn mua sách"
+            android:text="Tạo đơn mua sách"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:textSize="30dp"
@@ -23,25 +23,6 @@
             android:textColor="@color/lavender"
             android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/tvt_stu_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sinh Viên: "
-            android:textColor="@color/lavender"
-            android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textSize="20dp"/>
-
-        <TextView
-            android:id="@+id/tvt_stu_code"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MSV: "
-            android:textColor="@color/lavender"
-            android:layout_margin="10dp"
-            android:padding="5dp"
-            android:textSize="20dp"/>
         <TextView
             android:id="@+id/tvt_b_name"
             android:layout_width="match_parent"
@@ -90,7 +71,7 @@
                 android:padding="5dp"
                 android:textSize="20dp"/>
         </TableRow>
-<!--
+
         <TextView
             android:id="@+id/tvt_b_category"
             android:layout_width="match_parent"
@@ -118,7 +99,6 @@
             android:layout_margin="10dp"
             android:padding="5dp"
             android:textSize="20dp"/>
--->
 
         <TableRow
             android:layout_width="match_parent"

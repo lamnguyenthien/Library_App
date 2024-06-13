@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import lam.tutorials.libraryapp.BuyBookActivity;
 import lam.tutorials.libraryapp.R;
 import lam.tutorials.libraryapp.StudentBookDetailActivity;
 import lam.tutorials.libraryapp.TeacherBookDetailActivity;
@@ -51,6 +53,11 @@ public class BookAdapter extends RecyclerView.Adapter<MyBookViewHolder>
         holder.tvBookDate.setText("XB: " + booklist.get(position).getPublish_date());
         holder.tvCategory.setText("Thể loại: "+ booklist.get(position).getCategory());
         holder.tvPrice.setText("Giá: "+ String.valueOf(booklist.get(position).getPrice()) +" VND");
+
+        if(role.equals("Student")) {
+            holder.btnBuyBook.setVisibility(View.GONE);
+        }
+
         holder.bookCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,6 +75,16 @@ public class BookAdapter extends RecyclerView.Adapter<MyBookViewHolder>
                         context.startActivity(intent);
                     }
                 }
+            }
+        });
+
+        holder.btnBuyBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getBindingAdapterPosition();
+                Intent intent = new Intent(context, BuyBookActivity.class);
+                intent.putExtra("id_book", booklist.get(position).getId());
+                context.startActivity(intent);
             }
         });
 
@@ -91,6 +108,7 @@ class MyBookViewHolder extends RecyclerView.ViewHolder {
 
     TextView tvBookName, tvBookDate, tvBookAuthor, tvBookPublishComp, tvCategory, tvPrice;
     LinearLayout bookCard;
+    Button btnBuyBook;
     public MyBookViewHolder(@NonNull View itemView) {
         super(itemView);
 
@@ -101,5 +119,6 @@ class MyBookViewHolder extends RecyclerView.ViewHolder {
         tvCategory = itemView.findViewById(R.id.tv_category);
         tvPrice = itemView.findViewById(R.id.tv_price);
         bookCard = itemView.findViewById(R.id.recCard);
+        btnBuyBook = itemView.findViewById(R.id.btn_buy_book);
     }
 }

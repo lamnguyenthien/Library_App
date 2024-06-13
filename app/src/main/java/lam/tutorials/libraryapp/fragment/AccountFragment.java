@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import lam.tutorials.libraryapp.LoginActivity;
+import lam.tutorials.libraryapp.SignupActivity;
 import lam.tutorials.libraryapp.database.UserDAO;
 import lam.tutorials.libraryapp.databinding.DialogChangePasswordBinding;
 import lam.tutorials.libraryapp.databinding.FragmentAccountBinding;
@@ -50,19 +51,20 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 User ouser = userDAO.getUserByID(id_user);
-                String code = binding.editCode.getText().toString();
                 String fullname = binding.editFullname.getText().toString();
                 String email = binding.editEmail.getText().toString();
-                String role = binding.editRole.getText().toString();
-                if(ouser.getRole().equals(role)) {
-                    ouser.setCode(code);
-                    ouser.setEmail(email);
-                    ouser.setFullname(fullname);
-                    userDAO.updateUser(ouser);
-                    Toast.makeText(getContext(), "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getContext(), "Không thay đổi được vai trò của tài khoản", Toast.LENGTH_SHORT).show();
-                }
+                ouser.setEmail(email);
+                ouser.setFullname(fullname);
+                userDAO.updateUser(ouser);
+                Toast.makeText(getContext(), "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        binding.btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SignupActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -79,10 +81,15 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentAccountBinding.inflate(inflater, container, false);
         User u = userDAO.getUserByID(id_user);
-        binding.editCode.setText(u.getCode());
+        String role = u.getRole();
+
+        if(role.equals("Student")) {
+            binding.btnSignup.setVisibility(View.GONE);
+        }
+        binding.tvtCode.setText(u.getCode());
         binding.editFullname.setText(u.getFullname());
         binding.editEmail.setText(u.getEmail());
-        binding.editRole.setText(u.getRole());
+        binding.tvtRole.setText(u.getRole());
         return binding.getRoot();
     }
 
@@ -92,6 +99,9 @@ public class AccountFragment extends Fragment {
         dialog.setContentView(dialogbinding.getRoot());
 
         User ouser = userDAO.getUserByID(id_user);
+
+
+
 
         dialogbinding.btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override

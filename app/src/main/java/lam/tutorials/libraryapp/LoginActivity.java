@@ -28,13 +28,9 @@ public class LoginActivity extends AppCompatActivity {
         UserDAO userDAO = new UserDAO(this);
         BookDAO bookDAO = new BookDAO(this);
 
-
-
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 String code = binding.loginCode.getText().toString();
                 String password = binding.loginPassword.getText().toString();
                 if(code.equals("")||password.equals(""))
@@ -56,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent  = new Intent(getApplicationContext(), TeacherMainActivity.class);
                             intent.putExtra("id_user", id);
                             intent.putExtra("name_user", name);
+                            Log.d("Login_test","Manager");
                             startActivity(intent);
                         }
                     }else{
