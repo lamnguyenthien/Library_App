@@ -226,7 +226,7 @@ public class ManageFormFragment extends Fragment {
         }
 
         Row headerRowBorrow = borrowFormSheet.createRow(0);
-        String[] headers2 = {"Id", "Id_book", "Id_user","Ngày đăng ký","Ngày nhận","Ngày trả","Số lượng", "Tiền ứng"};
+        String[] headers2 = {"Id", "Id_book", "Id_user","Ngày đăng ký","Ngày trả","Số lượng", "Tiền ứng"};
         for(int i = 0; i < headers2.length;i++) {
             Cell headerCell = headerRowBorrow.createCell(i);
             headerCell.setCellValue(headers2[i]);
@@ -239,7 +239,7 @@ public class ManageFormFragment extends Fragment {
             dataRow.createCell(1).setCellValue(form.getId_book());
             dataRow.createCell(2).setCellValue(form.getId_user());
             dataRow.createCell(3).setCellValue(form.getRegis_date());
-            dataRow.createCell(4).setCellValue(form.getQuality());
+            dataRow.createCell(4).setCellValue(form.getQuantity());
             dataRow.createCell(5).setCellValue(form.getTotal());
         }
 
@@ -250,10 +250,9 @@ public class ManageFormFragment extends Fragment {
             dataRow.createCell(1).setCellValue(form.getId_book());
             dataRow.createCell(2).setCellValue(form.getId_user());
             dataRow.createCell(3).setCellValue(form.getRegis_date());
-            dataRow.createCell(4).setCellValue(form.getReceive_date());
-            dataRow.createCell(5).setCellValue(form.getReturn_date());
-            dataRow.createCell(6).setCellValue(form.getQuality());
-            dataRow.createCell(7).setCellValue(form.getTotal());
+            dataRow.createCell(4).setCellValue(form.getReturn_date());
+            dataRow.createCell(5).setCellValue(form.getQuantity());
+            dataRow.createCell(6).setCellValue(form.getTotal());
         }
 
         try {

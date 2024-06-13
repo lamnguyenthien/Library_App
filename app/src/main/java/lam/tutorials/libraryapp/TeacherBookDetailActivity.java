@@ -38,8 +38,9 @@ public class TeacherBookDetailActivity extends AppCompatActivity {
         binding.editBookType.setText(cBook.getType());
         binding.editBookCategory.setText(cBook.getCategory());
         binding.editBookFaculty.setText(cBook.getFaculty());
-        binding.editBookQualityStock.setText(String.valueOf(cBook.getQuality_stock()));
-        binding.editBookQualityBorrow.setText(String.valueOf(cBook.getQuality_borrow()));
+        binding.editAvaiForSale.setText(String.valueOf(cBook.getAvailableForSale()));
+        binding.editAvaiForLoan.setText(String.valueOf(cBook.getAvailableForLoan()));
+        binding.editQuantityBorrow.setText(String.valueOf(cBook.getBorrowedQuantity()));
         binding.editBookPrice.setText(String.valueOf(cBook.getPrice()));
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
@@ -72,16 +73,18 @@ public class TeacherBookDetailActivity extends AppCompatActivity {
                 String book_type = binding.editBookType.getText().toString();
                 String book_category = binding.editBookCategory.getText().toString();
                 String book_faculty = binding.editBookFaculty.getText().toString();
-                String quality_borrow = binding.editBookQualityBorrow.getText().toString();
-                String quality_stock = binding.editBookQualityStock.getText().toString();
+                String quantity_borrow = binding.editQuantityBorrow.getText().toString();
+                String avail_for_sale = binding.editAvaiForSale.getText().toString();
+                String avail_for_loan = binding.editAvaiForLoan.getText().toString();
                 String price = binding.editBookPrice.getText().toString();
                 if(book_name.equals("")||book_date.equals("")||book_author.equals("")||price.equals("")||
                    book_comp.equals("")||book_type.equals("")||book_category.equals("")||
-                   book_faculty.equals("")||quality_borrow.equals("")||quality_stock.equals("")) {
+                   book_faculty.equals("")||quantity_borrow.equals("")||avail_for_sale.equals("")||avail_for_loan.equals("")) {
                     Toast.makeText(getApplicationContext(), "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }else{
-                    int stock = Integer.parseInt(quality_stock);
-                    int borrow = Integer.parseInt(quality_borrow);
+                    int availsale = Integer.parseInt(avail_for_sale);
+                    int availloan = Integer.parseInt(avail_for_loan);
+                    int quantityborrow = Integer.parseInt(quantity_borrow);
                     long price_book = Long.parseLong(price);
                     oBook.setName(book_name);
                     oBook.setAuthor(book_author);
@@ -90,8 +93,9 @@ public class TeacherBookDetailActivity extends AppCompatActivity {
                     oBook.setType(book_type);
                     oBook.setCategory(book_category);
                     oBook.setFaculty(book_faculty);
-                    oBook.setQuality_borrow(borrow);
-                    oBook.setQuality_stock(stock);
+                    oBook.setAvailableForSale(availsale);
+                    oBook.setAvailableForLoan(availloan);
+                    oBook.setBorrowedQuantity(quantityborrow);
                     oBook.setPrice(price_book);
                     bookDAO.updateBook(oBook);
                     Toast.makeText(getApplicationContext(), "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();

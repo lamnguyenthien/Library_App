@@ -28,8 +28,6 @@ public class BorrowBookActivity extends AppCompatActivity {
 
     String selectedDate;
     String returnDate = "";
-    String receiveDate = "";
-
     UserDAO userDAO;
     BookDAO bookDAO;
     FormDAO formDAO;
@@ -89,33 +87,7 @@ public class BorrowBookActivity extends AppCompatActivity {
             datePickerDialog.show();
         });
 
-        binding.btnReceiveDate.setOnClickListener(v -> {
-            Calendar calender = Calendar.getInstance();
-            int year = calender.get(Calendar.YEAR);
-            int month = calender.get(Calendar.MONTH);
-            int dayOfMonth = calender.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    (view, selectedYear, selectedMonth, selectedDayOfMonth) -> {
-                        // Xử lý ngày được chọn
-                        Calendar selectedDate = Calendar.getInstance();
-                        selectedDate.set(selectedYear,selectedMonth,selectedDayOfMonth);
-                        int day_of_week = selectedDate.get(Calendar.DAY_OF_WEEK);
-
-                        if(selectedDate.getTimeInMillis() >= calender.getTimeInMillis()) {
-                            if(day_of_week == 7 || day_of_week == 1) {
-                                Toast.makeText(getApplicationContext(), "Chọn ngày nhận trong tuần",Toast.LENGTH_LONG).show();
-                            }else{
-                                receiveDate = String.format("%02d-%02d-%d",selectedDayOfMonth , selectedMonth + 1, selectedYear);
-                            }
-                        }else{
-                            Toast.makeText(getApplicationContext(), "Chọn ngày trong tương lai",Toast.LENGTH_LONG).show();
-                        }
-                    },
-                    year, month, dayOfMonth
-            );
-            datePickerDialog.show();
-        });
         binding.editQuality.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -131,7 +103,7 @@ public class BorrowBookActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 try {
                     int quality = Integer.parseInt(binding.editQuality.getText().toString());
-                    if(quality > book.getQuality_stock()) {
+                    if(quality > book.getAvailableForLoan()) {
                         Toast.makeText(getApplicationContext(), "Thư viện không đủ số lượng sách", Toast.LENGTH_SHORT).show();
                     }else{
                         long total = quality * book.getPrice();
@@ -149,24 +121,24 @@ public class BorrowBookActivity extends AppCompatActivity {
                 if(binding.editQuality.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập số lượng hợp lệ", Toast.LENGTH_SHORT).show();
                 }else{
-                    if(receiveDate.equals("") || returnDate.equals("")) {
-                        Toast.makeText(getApplicationContext(), "Vui lòng chọn ngày nhận và trả sách", Toast.LENGTH_SHORT).show();
+                    if(returnDate.equals("")) {
+                        Toast.makeText(getApplicationContext(), "Vui lòng chọn ngày trả sách", Toast.LENGTH_SHORT).show();
                     }else{
-                        int quality = Integer.parseInt(binding.editQuality.getText().toString());
+                        int quantity = Integer.parseInt(binding.editQuality.getText().toString());
                         Book cbook = bookDAO.getBookByID(id_book);
-                        if(quality > cbook.getQuality_stock()) {
-                            Toast.makeText(getApplicationContext(), "Thư viện không đủ sách", Toast.LENGTH_SHORT).show();
+                        if(quantity > cbook.getAvailableForLoan()) {
+                            Toast.makeText(getApplicationContext(), "Thư viện không đủ sách mượn", Toast.LENGTH_SHORT).show();
                         }else{
-                            long total = quality * cbook.getPrice();
+                            long total = quantity * cbook.getPrice();
                             Date date = new Date();
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                             String currentDate = dateFormat.format(date);
 
-                            Form borrowform = new Form(id_book, id_student, "BorrowForm", "Chờ nhận", currentDate, receiveDate, returnDate, quality,total);
-                            int stock = cbook.getQuality_stock() - quality;
-                            int borrow = cbook.getQuality_borrow() + quality;
-                            cbook.setQuality_stock(stock);
-                            cbook.setQuality_borrow(borrow);
+                            Form borrowform = new Form(id_book, id_student,"", "BorrowForm", "Chờ nhận", currentDate, returnDate, quantity,total);
+                            int stock = cbook.getAvailableForLoan() - quantity;
+                            int borrow = cbook.getBorrowedQuantity() + quantity;
+                            cbook.setAvailableForLoan(stock);
+                            cbook.setBorrowedQuantity(borrow);
                             bookDAO.updateBook(cbook);
                             long new_id = formDAO.insertForm(borrowform);
                             if(new_id < 0) {

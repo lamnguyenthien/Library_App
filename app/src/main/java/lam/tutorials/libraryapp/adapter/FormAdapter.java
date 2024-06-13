@@ -48,7 +48,7 @@ public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
     public void onBindViewHolder(@NonNull MyFormViewHolder holder, int position) {
         holder.tvBookName.setText("Tên sách: " + getNameBookById(formlist.get(position).getId_book(),context));
         holder.tvStatus.setText("Trạng thái: " + formlist.get(position).getStatus());
-        holder.tvQuality.setText("Số lượng: " + formlist.get(position).getQuality());
+        holder.tvQuality.setText("Số lượng: " + formlist.get(position).getQuantity());
         holder.tvCode.setText("Code: " + formlist.get(position).getCode());
         if(role.equals("Student")) {
             holder.tvUserName.setVisibility(View.GONE);
@@ -62,7 +62,6 @@ public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
                 holder.tableRow.setVisibility(View.VISIBLE);
                 holder.tvTotal.setText("Tiền ứng: " + formlist.get(position).getTotal() + " VND");
                 holder.tvRegisDate.setText("Ngày đăng ký: " + formlist.get(position).getRegis_date());
-                holder.tvReceiveDate.setText("Ngày nhận: " + formlist.get(position).getReceive_date());
                 holder.tvReturnDate.setText("Ngày trả: " + formlist.get(position).getReturn_date());
             }
         }else {
@@ -77,7 +76,6 @@ public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
                 holder.tableRow.setVisibility(View.VISIBLE);
                 holder.tvTotal.setText("Tiền ứng: " + formlist.get(position).getTotal() + " VND");
                 holder.tvRegisDate.setText("Ngày đăng ký: " + formlist.get(position).getRegis_date());
-                holder.tvReceiveDate.setText("Ngày nhận: " + formlist.get(position).getReceive_date());
                 holder.tvReturnDate.setText("Ngày trả: " + formlist.get(position).getReturn_date());
                 holder.btnChangeStatus.setVisibility(View.VISIBLE);
                 if(formlist.get(position).getStatus().equals("Chờ nhận")) {
@@ -145,7 +143,6 @@ class MyFormViewHolder extends RecyclerView.ViewHolder {
         tvQuality = itemView.findViewById(R.id.tv_quality);
         tvTotal = itemView.findViewById(R.id.tv_total);
         tvRegisDate = itemView.findViewById(R.id.tv_regis_date);
-        tvReceiveDate = itemView.findViewById(R.id.tv_receive_date);
         tvReturnDate = itemView.findViewById(R.id.tv_return_date);
         tvCode = itemView.findViewById(R.id.tv_code);
         tableRow = itemView.findViewById(R.id.tableRow);

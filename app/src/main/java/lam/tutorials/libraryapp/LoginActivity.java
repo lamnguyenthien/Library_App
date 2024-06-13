@@ -28,9 +28,13 @@ public class LoginActivity extends AppCompatActivity {
         UserDAO userDAO = new UserDAO(this);
         BookDAO bookDAO = new BookDAO(this);
 
+
+
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 String code = binding.loginCode.getText().toString();
                 String password = binding.loginPassword.getText().toString();
                 if(code.equals("")||password.equals(""))
@@ -58,13 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
-        });
-        binding.signupRedirectText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
             }
         });
     }

@@ -112,28 +112,39 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2">
+            android:weightSum="3">
 
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:id="@+id/nbook_quality_stock"
+                android:id="@+id/nbook_avail_sale"
                 android:background="@drawable/lavender_border"
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
-                android:hint="Số lượng còn:"
+                android:hint="Bán:"
                 android:layout_marginRight="5dp"/>
 
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:id="@+id/nbook_quality_borrow"
+                android:id="@+id/nbook_avail_loan"
                 android:background="@drawable/lavender_border"
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
-                android:hint="Số lượng mượn:"
+                android:hint="Mượn:"
+                android:layout_marginLeft="5dp"/>
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:id="@+id/nbook_quantity_borrow"
+                android:background="@drawable/lavender_border"
+                android:layout_marginTop="30dp"
+                android:padding="8dp"
+                android:hint="Đang mượn:"
                 android:layout_marginLeft="5dp"/>
         </TableRow>
 

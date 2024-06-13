@@ -235,21 +235,21 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="4"
+            android:weightSum="3"
             android:padding="10dp">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Còn: "
+                android:layout_weight="2"
+                android:text="Số lượng sách bán: "
                 android:textColor="@color/lavender"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
             <EditText
-                android:id="@+id/edit_book_quality_stock"
+                android:id="@+id/edit_avai_for_sale"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:background="@drawable/lavender_border"
                 android:textSize="16dp"
                 android:textColor="@color/black"
@@ -258,21 +258,79 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Mượn: "
+                android:layout_weight="0.5"
+                android:text="Quyển"
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Số lượng sách cho mượn: "
                 android:textColor="@color/lavender"
                 android:textAlignment="center"
                 android:textSize="18dp"/>
             <EditText
-                android:id="@+id/edit_book_quality_borrow"
+                android:id="@+id/edit_avai_for_loan"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="1"
+                android:layout_weight="0.5"
                 android:background="@drawable/lavender_border"
                 android:textSize="16dp"
                 android:textColor="@color/black"
                 android:paddingLeft="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Quyển"
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Số lượng sách đang mượn: "
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+            <EditText
+                android:id="@+id/edit_quantity_borrow"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/lavender_border"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+                android:paddingLeft="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="Quyển"
+                android:textColor="@color/lavender"
+                android:textAlignment="center"
+                android:textSize="18dp"/>
+        </TableRow>
+
 
 
         <TableRow

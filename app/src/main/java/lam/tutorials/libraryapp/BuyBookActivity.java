@@ -54,7 +54,7 @@ public class BuyBookActivity extends AppCompatActivity {
         //binding.tvtBFaculty.setText("Ngành: " + book.getFaculty());
         binding.tvtBookPrice.setText("Giá: " + book.getPrice() + " VND");
 
-        binding.editQuality.addTextChangedListener(new TextWatcher() {
+        /**binding.editQuality.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -121,6 +121,6 @@ public class BuyBookActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
     }
 }

@@ -29,7 +29,7 @@ public class StudentBookDetailActivity extends AppCompatActivity {
         bookDAO = new BookDAO(getApplicationContext());
         Book book = bookDAO.getBookByID(id_book);
         User user = userDAO.getUserByID(id_user);
-        binding.tvtBookStock.setText("Còn: " + book.getQuality_stock());
+        binding.tvtBookStock.setText("Còn: " + book.getAvailableForLoan());
     }
 
     @Override
@@ -54,23 +54,13 @@ public class StudentBookDetailActivity extends AppCompatActivity {
         binding.tvtBType.setText("Loại: " + book.getType());
         binding.tvtBCategory.setText("Thể loại: " + book.getCategory());
         binding.tvtBFaculty.setText("Ngành: " + book.getFaculty());
-        binding.tvtBookStock.setText("Còn: " + book.getQuality_stock());
+        binding.tvtBookStock.setText("Còn: " + book.getAvailableForLoan());
         binding.tvtBookPrice.setText("Giá: " + book.getPrice() + " VND");
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-
-        binding.btnBuyBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BuyBookActivity.class);
-                intent.putExtra("id_student", id_user);
-                intent.putExtra("id_book", id_book);
-                startActivity(intent);
             }
         });
 

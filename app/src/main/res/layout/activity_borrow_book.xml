@@ -170,30 +170,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Đăng ký ngày nhận: "
-                android:textColor="@color/lavender"
-                android:textSize="20dp"/>
-
-            <Button
-                android:id="@+id/btn_receive_date"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="Chọn ngày"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="5dp"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Đăng ký ngày trả: "
                 android:textColor="@color/lavender"
                 android:textSize="20dp"/>

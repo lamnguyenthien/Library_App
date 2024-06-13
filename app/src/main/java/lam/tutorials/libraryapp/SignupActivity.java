@@ -68,11 +68,11 @@ public class SignupActivity extends AppCompatActivity {
                                     userDAO.insertUser(nUser);
                                     nUser = new User("GV_02", "vuthiduong@gmail.com", "Vũ Thị Dương", "Teacher", "123456",1);
                                     userDAO.insertUser(nUser);
-                                    Book nBook = new Book("Nguyên lý hệ điều hành", "Nguyễn Bá Nghiễn", "2020", "Kim Đồng", 20, 2, "Khoa học", "Giáo trình", "CNTT",20000,1);
+                                    Book nBook = new Book("Nguyên lý hệ điều hành", "Nguyễn Bá Nghiễn", "2020", "Kim Đồng",22, 20, 2, "Khoa học", "Giáo trình", "CNTT",20000,1);
                                     bookDAO.insertBook(nBook);
-                                    nBook = new Book("Phát triển ứng dụng di động", "Nguyễn Bá Nghiễn", "2022", "Thống kê", 22, 2, "Khoa học", "Giáo trình", "CNTT",20000,1);
+                                    nBook = new Book("Phát triển ứng dụng di động", "Nguyễn Bá Nghiễn", "2022", "Thống kê",22, 22, 2, "Khoa học", "Giáo trình", "CNTT",20000,1);
                                     bookDAO.insertBook(nBook);
-                                    nBook = new Book("Giàu từ chứng khoán", "John Boik", "2016", "Lao động", 22, 2, "Kinh tế", "Sách", "Không",79000,1);
+                                    nBook = new Book("Giàu từ chứng khoán", "John Boik", "2016", "Lao động",22, 22, 2, "Kinh tế", "Sách", "Không",79000,1);
                                     bookDAO.insertBook(nBook);
                                     Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
                                     startActivity(intent);

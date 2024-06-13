@@ -35,22 +35,24 @@ public class UploadBookActivity extends AppCompatActivity {
                 String type = binding.nbookType.getText().toString();
                 String category = binding.nbookCategory.getText().toString();
                 String faculty = binding.nbookFaculty.getText().toString();
-                String stock = binding.nbookQualityStock.getText().toString();
-                String borrow = binding.nbookQualityBorrow.getText().toString();
+                String avail_sale = binding.nbookAvailSale.getText().toString();
+                String avail_loan = binding.nbookAvailLoan.getText().toString();
+                String quantity_borrow = binding.nbookQuantityBorrow.getText().toString();
                 String price_string = binding.nbookPrice.getText().toString();
                 long price = Long.parseLong(price_string);
-                int quality_stock = Integer.parseInt(stock);
-                int quality_borrow = Integer.parseInt(borrow);
+                int sale = Integer.parseInt(avail_sale);
+                int loan = Integer.parseInt(avail_loan);
+                int quantity = Integer.parseInt(quantity_borrow);
 
                 if(name.equals("")||author.equals("")||publish_comp.equals("")||publish_date.equals("")||price_string.equals("")
-                    ||type.equals("")||category.equals("")||faculty.equals("")||stock.equals("")||borrow.equals("")) {
+                    ||type.equals("")||category.equals("")||faculty.equals("")||avail_sale.equals("")||avail_loan.equals("")||quantity_borrow.equals("")) {
 
                     Toast.makeText(UploadBookActivity.this,"Nhập đầy đủ thông tin",Toast.LENGTH_LONG).show();
                 }else{
                     if(checkBookIsExist(name,publish_date,author,publish_comp,UploadBookActivity.this)) {
                         Toast.makeText(UploadBookActivity.this,"Sách đã tồn tại",Toast.LENGTH_LONG).show();
                     }else{
-                        Book nBook = new Book(name, author, publish_date, publish_comp, quality_stock, quality_borrow, category, type, faculty,price,1);
+                        Book nBook = new Book(name, author, publish_date, publish_comp, sale, loan,quantity, category, type, faculty,price,1);
                         if(bookDAO.insertBook(nBook) < 0) {
                             Toast.makeText(UploadBookActivity.this,"Thêm không thành công",Toast.LENGTH_LONG).show();
                         }else{
@@ -65,8 +67,7 @@ public class UploadBookActivity extends AppCompatActivity {
         binding.btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), TeacherMainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

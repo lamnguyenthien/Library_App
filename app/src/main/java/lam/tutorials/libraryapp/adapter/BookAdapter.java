@@ -56,7 +56,7 @@ public class BookAdapter extends RecyclerView.Adapter<MyBookViewHolder>
             public void onClick(View v) {
                 int position = holder.getBindingAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
-                    if(role.equals("Teacher")) {
+                    if(role.equals("Manager")) {
                         Intent intent = new Intent(context, TeacherBookDetailActivity.class);
                         intent.putExtra("id_book", booklist.get(position).getId());
                         intent.putExtra("id_teacher",id_user);
