@@ -13,23 +13,24 @@ public class Book {
     private String author;
     private String publish_date;
     private String publish_comp;
-    private int quality_stock;
-    private int quality_borrow;
+    private int availableForSale;
+    private int availableForLoan;
+    private int borrowedQuantity;
     private String category;
     private String type;
     private String faculty;
     private long price;
     private int enable;
 
-
-    public Book(int id, String name, String author, String publish_date, String publish_comp, int quality_stock, int quality_borrow, String category, String type, String faculty, long price, int enable) {
+    public Book(int id, String name, String author, String publish_date, String publish_comp, int availableForSale, int availableForLoan, int borrowedQuantity, String category, String type, String faculty, long price, int enable) {
         this.id = id;
         this.name = name;
         this.author = author;
         this.publish_date = publish_date;
         this.publish_comp = publish_comp;
-        this.quality_stock = quality_stock;
-        this.quality_borrow = quality_borrow;
+        this.availableForSale = availableForSale;
+        this.availableForLoan = availableForLoan;
+        this.borrowedQuantity = borrowedQuantity;
         this.category = category;
         this.type = type;
         this.faculty = faculty;
@@ -37,29 +38,19 @@ public class Book {
         this.enable = enable;
     }
 
-    public Book(String name, String author, String publish_date, String publish_comp, int quality_stock, int quality_borrow, String category, String type, String faculty, long price, int enable) {
+    public Book(String name, String author, String publish_date, String publish_comp, int availableForSale, int availableForLoan, int borrowedQuantity, String category, String type, String faculty, long price, int enable) {
         this.name = name;
         this.author = author;
         this.publish_date = publish_date;
         this.publish_comp = publish_comp;
-        this.quality_stock = quality_stock;
-        this.quality_borrow = quality_borrow;
+        this.availableForSale = availableForSale;
+        this.availableForLoan = availableForLoan;
+        this.borrowedQuantity = borrowedQuantity;
         this.category = category;
         this.type = type;
         this.faculty = faculty;
         this.price = price;
         this.enable = enable;
-    }
-
-    public Book() {
-    }
-
-    public long getPrice() {
-        return price;
-    }
-
-    public void setPrice(long price) {
-        this.price = price;
     }
 
     public int getId() {
@@ -102,20 +93,28 @@ public class Book {
         this.publish_comp = publish_comp;
     }
 
-    public int getQuality_stock() {
-        return quality_stock;
+    public int getAvailableForSale() {
+        return availableForSale;
     }
 
-    public void setQuality_stock(int quality_stock) {
-        this.quality_stock = quality_stock;
+    public void setAvailableForSale(int availableForSale) {
+        this.availableForSale = availableForSale;
     }
 
-    public int getQuality_borrow() {
-        return quality_borrow;
+    public int getAvailableForLoan() {
+        return availableForLoan;
     }
 
-    public void setQuality_borrow(int quality_borrow) {
-        this.quality_borrow = quality_borrow;
+    public void setAvailableForLoan(int availableForLoan) {
+        this.availableForLoan = availableForLoan;
+    }
+
+    public int getBorrowedQuantity() {
+        return borrowedQuantity;
+    }
+
+    public void setBorrowedQuantity(int borrowedQuantity) {
+        this.borrowedQuantity = borrowedQuantity;
     }
 
     public String getCategory() {
@@ -140,6 +139,14 @@ public class Book {
 
     public void setFaculty(String faculty) {
         this.faculty = faculty;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 
     public int getEnable() {

@@ -70,6 +70,8 @@ public class BookAdapter extends RecyclerView.Adapter<MyBookViewHolder>
                 }
             }
         });
+
+        
     }
 
     @Override

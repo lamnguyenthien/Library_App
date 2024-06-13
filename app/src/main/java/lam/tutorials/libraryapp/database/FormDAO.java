@@ -18,8 +18,8 @@ public class FormDAO {
     public static final String SQL_TAO_BANG_FORM =
             "CREATE TABLE form (id integer primary key autoincrement," +
                     "id_book integer, id_user integer, code text, type text, " +
-                    "status text, regis_date text, receive_date text," +
-                    "return_date text, quality integer, total integer)";
+                    "status text, regis_date text," +
+                    "return_date text, quantity integer, total integer)";
 
     public static final String TABLE_NAME = "form";
 
@@ -38,9 +38,8 @@ public class FormDAO {
         values.put("type",form.getType());
         values.put("status",form.getStatus());
         values.put("regis_date",form.getRegis_date());
-        values.put("receive_date",form.getReceive_date());
         values.put("return_date",form.getReturn_date());
-        values.put("quality",form.getQuality());
+        values.put("quantity",form.getQuantity());
         values.put("total",form.getTotal());
 
         long id = db.insert(TABLE_NAME,null, values);
@@ -61,9 +60,8 @@ public class FormDAO {
         values.put("type",form.getType());
         values.put("status",form.getStatus());
         values.put("regis_date",form.getRegis_date());
-        values.put("receive_date",form.getReceive_date());
         values.put("return_date",form.getReturn_date());
-        values.put("quality",form.getQuality());
+        values.put("quantity",form.getQuantity());
         values.put("total",form.getTotal());
 
         db.update(TABLE_NAME,values,"id = ?", new String[]{String.valueOf(form.getId())});
@@ -85,8 +83,8 @@ public class FormDAO {
             cursor.moveToFirst();
         Form form = new Form( cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
                 cursor.getString(3), cursor.getString(4), cursor.getString(5),
-                cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                cursor.getInt(9), cursor.getInt(10));
+                cursor.getString(6), cursor.getString(7),
+                cursor.getInt(8), cursor.getInt(9));
         cursor.close();
         //db.close();
         return form;
@@ -104,8 +102,8 @@ public class FormDAO {
         while(cursor.isAfterLast()==false) {
             Form form = new Form( cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
                     cursor.getString(3), cursor.getString(4), cursor.getString(5),
-                    cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                    cursor.getInt(9), cursor.getInt(10));
+                    cursor.getString(6), cursor.getString(7),
+                    cursor.getInt(8), cursor.getInt(9));
             formList.add(form);
             cursor.moveToNext();
         }
@@ -126,8 +124,8 @@ public class FormDAO {
         while(cursor.isAfterLast()==false) {
             Form form = new Form( cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
                     cursor.getString(3), cursor.getString(4), cursor.getString(5),
-                    cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                    cursor.getInt(9), cursor.getInt(10));
+                    cursor.getString(6), cursor.getString(7),
+                    cursor.getInt(8), cursor.getInt(9));
             formList.add(form);
             cursor.moveToNext();
         }
@@ -148,8 +146,8 @@ public class FormDAO {
         while(cursor.isAfterLast()==false) {
             Form form = new Form( cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
                     cursor.getString(3), cursor.getString(4), cursor.getString(5),
-                    cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                    cursor.getInt(9), cursor.getInt(10));
+                    cursor.getString(6), cursor.getString(7),
+                    cursor.getInt(8), cursor.getInt(9));
             formList.add(form);
             cursor.moveToNext();
         }
@@ -170,8 +168,8 @@ public class FormDAO {
         while(cursor.isAfterLast()==false) {
             Form form = new Form( cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
                     cursor.getString(3), cursor.getString(4), cursor.getString(5),
-                    cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                    cursor.getInt(9), cursor.getInt(10));
+                    cursor.getString(6), cursor.getString(7),
+                    cursor.getInt(8), cursor.getInt(9));
             formList.add(form);
             cursor.moveToNext();
         }
@@ -192,8 +190,8 @@ public class FormDAO {
         while(cursor.isAfterLast()==false) {
             Form form = new Form( cursor.getInt(0), cursor.getInt(1), cursor.getInt(2),
                     cursor.getString(3), cursor.getString(4), cursor.getString(5),
-                    cursor.getString(6), cursor.getString(7), cursor.getString(8),
-                    cursor.getInt(9), cursor.getInt(10));
+                    cursor.getString(6), cursor.getString(7),
+                    cursor.getInt(8), cursor.getInt(9));
             formList.add(form);
             cursor.moveToNext();
         }

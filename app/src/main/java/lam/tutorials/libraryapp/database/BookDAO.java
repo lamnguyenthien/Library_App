@@ -20,8 +20,8 @@ public class BookDAO {
     public static final String SQL_TAO_BANG_BOOK =
             "CREATE TABLE book (id integer primary key autoincrement," +
                     "name text, author text, publish_date text," +
-                    "publish_comp text, quality_stock integer," +
-                    "quality_borrow integer, category text, type text," +
+                    "publish_comp text, availableForSale integer," +
+                    "availableForLoan integer,borrowedQuantity integer, category text, type text," +
                     "faculty text, price integer, enable integer)";
 
     public static final String TABLE_NAME = "book";
@@ -39,8 +39,9 @@ public class BookDAO {
         values.put("author",book.getAuthor());
         values.put("publish_date",book.getPublish_date());
         values.put("publish_comp",book.getPublish_comp());
-        values.put("quality_stock",book.getQuality_stock());
-        values.put("quality_borrow",book.getQuality_borrow());
+        values.put("availableForSale",book.getAvailableForSale());
+        values.put("availableForLoan",book.getAvailableForLoan());
+        values.put("borrowedQuantity",book.getBorrowedQuantity());
         values.put("category",book.getCategory());
         values.put("type",book.getType());
         values.put("faculty",book.getFaculty());
@@ -61,8 +62,9 @@ public class BookDAO {
         values.put("author",book.getAuthor());
         values.put("publish_date",book.getPublish_date());
         values.put("publish_comp",book.getPublish_comp());
-        values.put("quality_stock",book.getQuality_stock());
-        values.put("quality_borrow",book.getQuality_borrow());
+        values.put("availableForSale",book.getAvailableForSale());
+        values.put("availableForLoan",book.getAvailableForLoan());
+        values.put("borrowedQuantity",book.getBorrowedQuantity());
         values.put("category",book.getCategory());
         values.put("type",book.getType());
         values.put("faculty",book.getFaculty());
@@ -88,9 +90,9 @@ public class BookDAO {
             cursor.moveToFirst();
         Book book = new Book(cursor.getInt(0), cursor.getString(1),
                             cursor.getString(2),  cursor.getString(3),
-                            cursor.getString(4),cursor.getInt(5),cursor.getInt(6),
-                            cursor.getString(7), cursor.getString(8), cursor.getString(9),
-                            cursor.getInt(10),cursor.getInt(11));
+                            cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7),
+                            cursor.getString(8), cursor.getString(9), cursor.getString(10),
+                            cursor.getInt(11),cursor.getInt(12));
         cursor.close();
         //db.close();
         return book;
@@ -108,9 +110,9 @@ public class BookDAO {
         while(cursor.isAfterLast()==false) {
             Book book = new Book(cursor.getInt(0), cursor.getString(1),
                     cursor.getString(2),  cursor.getString(3),
-                    cursor.getString(4),cursor.getInt(5),cursor.getInt(6),
-                    cursor.getString(7), cursor.getString(8), cursor.getString(9),
-                    cursor.getInt(10),cursor.getInt(11));
+                    cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7),
+                    cursor.getString(8), cursor.getString(9), cursor.getString(10),
+                    cursor.getInt(11),cursor.getInt(12));
             bookList.add(book);
             cursor.moveToNext();
         }
@@ -131,9 +133,9 @@ public class BookDAO {
         while(cursor.isAfterLast()==false) {
             Book book = new Book(cursor.getInt(0), cursor.getString(1),
                     cursor.getString(2),  cursor.getString(3),
-                    cursor.getString(4),cursor.getInt(5),cursor.getInt(6),
-                    cursor.getString(7), cursor.getString(8), cursor.getString(9),
-                    cursor.getInt(10),cursor.getInt(11));
+                    cursor.getString(4),cursor.getInt(5),cursor.getInt(6),cursor.getInt(7),
+                    cursor.getString(8), cursor.getString(9), cursor.getString(10),
+                    cursor.getInt(11),cursor.getInt(12));
             bookList.add(book);
             cursor.moveToNext();
         }
