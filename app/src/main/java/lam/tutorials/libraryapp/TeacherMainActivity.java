@@ -44,7 +44,7 @@ public class TeacherMainActivity extends AppCompatActivity {
         manageFormFragment_create.setArguments(bundle_create);
         replaceFragment(manageFormFragment_create);
 
-        binding.bottomNavigationView.setBackground(null);
+        //binding.bottomNavigationView.setBackground(null);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             Bundle bundle = new Bundle();
@@ -72,7 +72,4 @@ public class TeacherMainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout,fragment);
         fragmentTransaction.commit();
     }
-
-
-
 }

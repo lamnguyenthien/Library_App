@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".fragment.RegisFormFragment">
-
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +14,6 @@
         android:layout_marginBottom="75dp"
         android:padding="5dp"
         android:paddingTop="10dp">
-
         <androidx.appcompat.widget.SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +28,6 @@
             app:closeIcon="@drawable/baseline_clear_24"
             app:searchIcon="@drawable/baseline_search_24"
             android:background="@drawable/lavender_border"/>
-
         <TableRow
             android:id="@+id/tablerow_status"
             android:layout_marginTop="10dp"
@@ -42,14 +39,12 @@
             android:paddingRight="10dp"
             android:weightSum="3"
             android:background="@drawable/lavender_border">
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Trạng thái"
                 android:textSize="18sp"/>
-
             <Spinner
                 android:id="@+id/spin_status"
                 android:layout_width="0dp"
@@ -57,7 +52,6 @@
                 android:layout_weight="2"
                 android:textSize="20sp" />
         </TableRow>
-
         <androidx.recyclerview.widget.RecyclerView
             android:layout_below="@+id/tablerow_status"
             android:layout_marginTop="10dp"
@@ -65,9 +59,5 @@
             android:layout_height="match_parent"
             android:id="@+id/recyclerView"
             android:scrollbars="vertical" />
-
-
-
     </RelativeLayout>
-
 </FrameLayout>

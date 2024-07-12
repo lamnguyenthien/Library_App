@@ -4,6 +4,7 @@ import static lam.tutorials.libraryapp.service.BookService.getNameBookById;
 import static lam.tutorials.libraryapp.service.UserService.getNameById;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
@@ -20,7 +23,9 @@ import java.util.Date;
 import java.util.List;
 
 import lam.tutorials.libraryapp.R;
+import lam.tutorials.libraryapp.TeacherBookDetailActivity;
 import lam.tutorials.libraryapp.database.FormDAO;
+import lam.tutorials.libraryapp.entity.Book;
 import lam.tutorials.libraryapp.entity.Form;
 
 public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
@@ -87,26 +92,45 @@ public class FormAdapter extends RecyclerView.Adapter<MyFormViewHolder>
                 }
             }
         }
-
         holder.btnChangeStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Form cform = formlist.get(holder.getAdapterPosition());
-                FormDAO formDAO = new FormDAO(context);
-                if(cform.getStatus().equals("Chờ nhận")) {
-                    cform.setStatus("Đã nhận");
-                    formDAO.updateForm(cform);
-                    notifyDataSetChanged();
-                }else if(cform.getStatus().equals("Đã nhận")) {
-                    Date date = new Date();
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd_MM_yyyy");
-                    String currentDate = dateFormat.format(date);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xác nhận trạng thái");
+                builder.setMessage("Bạn có chắc chắn muốn thay đổi trạng thái đơn này?");
 
-                    cform.setReturn_date(currentDate);
-                    cform.setStatus("Đã trả");
-                    formDAO.updateForm(cform);
-                    notifyDataSetChanged();
-                }
+                builder.setPositiveButton("Thay đổi", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Form cform = formlist.get(holder.getAdapterPosition());
+                        FormDAO formDAO = new FormDAO(context);
+                        if(cform.getStatus().equals("Chờ nhận")) {
+                            cform.setStatus("Đã nhận");
+                            formDAO.updateForm(cform);
+                            notifyDataSetChanged();
+                        }else if(cform.getStatus().equals("Đã nhận")) {
+                            Date date = new Date();
+                            SimpleDateFormat dateFormat = new SimpleDateFormat("dd_MM_yyyy");
+                            String currentDate = dateFormat.format(date);
+
+                            cform.setReturn_date(currentDate);
+                            cform.setStatus("Đã trả");
+                            formDAO.updateForm(cform);
+                            notifyDataSetChanged();
+                        }
+                    }
+                });
+
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Đóng dialog
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
             }
         });
 

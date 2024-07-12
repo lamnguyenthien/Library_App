@@ -253,7 +253,8 @@
                 android:background="@drawable/lavender_border"
                 android:textSize="16dp"
                 android:textColor="@color/black"
-                android:paddingLeft="8dp"/>
+                android:paddingLeft="8dp"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -277,7 +278,8 @@
                 android:text="Số lượng sách cho mượn: "
                 android:textColor="@color/lavender"
                 android:textAlignment="center"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                />
             <EditText
                 android:id="@+id/edit_avai_for_loan"
                 android:layout_width="0dp"
@@ -286,7 +288,8 @@
                 android:background="@drawable/lavender_border"
                 android:textSize="16dp"
                 android:textColor="@color/black"
-                android:paddingLeft="8dp"/>
+                android:paddingLeft="8dp"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -310,7 +313,8 @@
                 android:text="Số lượng sách đang mượn: "
                 android:textColor="@color/lavender"
                 android:textAlignment="center"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                />
             <EditText
                 android:id="@+id/edit_quantity_borrow"
                 android:layout_width="0dp"
@@ -319,7 +323,8 @@
                 android:background="@drawable/lavender_border"
                 android:textSize="16dp"
                 android:textColor="@color/black"
-                android:paddingLeft="8dp"/>
+                android:paddingLeft="8dp"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="0dp"

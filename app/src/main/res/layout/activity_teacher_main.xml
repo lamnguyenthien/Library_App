@@ -39,8 +39,6 @@
             app:labelVisibilityMode="labeled"
             android:background="@android:color/transparent"
             app:menu="@menu/teacher_bottom_menu"/>
-
-
     </com.google.android.material.bottomappbar.BottomAppBar>
 
 

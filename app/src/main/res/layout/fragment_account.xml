@@ -141,14 +141,6 @@
         </TableRow>
 
         <Button
-            android:id="@+id/btn_signup"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:text="Thêm tài khoản sinh viên"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"/>
-
-        <Button
             android:id="@+id/btn_logout"
             android:layout_width="150dp"
             android:layout_height="50dp"

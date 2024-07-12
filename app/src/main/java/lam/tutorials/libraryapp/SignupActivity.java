@@ -67,10 +67,11 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        binding.signupBack.setOnClickListener(new View.OnClickListener() {
+        binding.loginRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                finish();
+            public void onClick(View view) {
+                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -96,7 +96,8 @@
                 android:id="@+id/nbook_price"
                 android:background="@drawable/lavender_border"
                 android:padding="8dp"
-                android:hint="Giá" />
+                android:hint="Giá"
+                android:inputType="number"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -123,7 +124,8 @@
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
                 android:hint="Bán:"
-                android:layout_marginRight="5dp"/>
+                android:layout_marginRight="5dp"
+                android:inputType="number"/>
 
             <EditText
                 android:layout_width="0dp"
@@ -134,7 +136,8 @@
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
                 android:hint="Mượn:"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:inputType="number"/>
 
             <EditText
                 android:layout_width="0dp"
@@ -145,7 +148,8 @@
                 android:layout_marginTop="30dp"
                 android:padding="8dp"
                 android:hint="Đang mượn:"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:inputType="number"/>
         </TableRow>
 
         <TableRow

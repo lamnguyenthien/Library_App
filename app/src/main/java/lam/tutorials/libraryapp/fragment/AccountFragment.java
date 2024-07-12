@@ -50,21 +50,25 @@ public class AccountFragment extends Fragment {
         binding.btnUpdateAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User ouser = userDAO.getUserByID(id_user);
-                String fullname = binding.editFullname.getText().toString();
-                String email = binding.editEmail.getText().toString();
-                ouser.setEmail(email);
-                ouser.setFullname(fullname);
-                userDAO.updateUser(ouser);
-                Toast.makeText(getContext(), "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();
-            }
-        });
+                try {
+                    User ouser = userDAO.getUserByID(id_user);
+                    String fullname = binding.editFullname.getText().toString().trim();
+                    String email = binding.editEmail.getText().toString().trim();
+                    if(fullname.equals("")) {
+                        throw new Exception("Trống họ tên");
+                    }
+                    if(email.equals("")) {
+                        throw new Exception("Trống email");
+                    }
+                    ouser.setEmail(email);
+                    ouser.setFullname(fullname);
+                    userDAO.updateUser(ouser);
+                    Toast.makeText(getContext(), "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();
 
-        binding.btnSignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SignupActivity.class);
-                startActivity(intent);
+                }catch (Exception ex) {
+                    Toast.makeText(getContext(), "Cập nhật thông tin không thành công " + ex.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
 
@@ -83,9 +87,6 @@ public class AccountFragment extends Fragment {
         User u = userDAO.getUserByID(id_user);
         String role = u.getRole();
 
-        if(role.equals("Student")) {
-            binding.btnSignup.setVisibility(View.GONE);
-        }
         binding.tvtCode.setText(u.getCode());
         binding.editFullname.setText(u.getFullname());
         binding.editEmail.setText(u.getEmail());
@@ -109,15 +110,18 @@ public class AccountFragment extends Fragment {
                 String currentpass = dialogbinding.editCurrentPass.getText().toString();
                 String newpass = dialogbinding.editNewPass.getText().toString();
                 String confirmpass = dialogbinding.editConfirmPass.getText().toString();
-
                 if(ouser.getPassword().equals(currentpass)) {
-                    if(newpass.equals(confirmpass)) {
-                        ouser.setPassword(newpass);
-                        userDAO.updateUser(ouser);
-                        Toast.makeText(getContext(), "Mật khẩu đã được thay đổi", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
+                    if(newpass.length()>=6) {
+                        if(newpass.equals(confirmpass)) {
+                            ouser.setPassword(newpass);
+                            userDAO.updateUser(ouser);
+                            Toast.makeText(getContext(), "Mật khẩu đã được thay đổi", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }else{
+                            Toast.makeText(getContext(), "Mật khẩu xác nhận không trùng khớp", Toast.LENGTH_SHORT).show();
+                        }
                     }else{
-                        Toast.makeText(getContext(), "Mật khẩu xác nhận không trùng khớp", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Mật khẩu phải nhiều hơn 6 kí tự", Toast.LENGTH_SHORT).show();
                     }
                 }else {
                     Toast.makeText(getContext(), "Mật khẩu không đúng", Toast.LENGTH_SHORT).show();

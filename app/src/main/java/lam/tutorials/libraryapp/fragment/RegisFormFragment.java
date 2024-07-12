@@ -118,6 +118,7 @@ public class RegisFormFragment extends Fragment {
         });
     }
 
+    //Phương thức tìm kiếm đơn theo mã
     private void searchListForm(String text) {
         ArrayList<Form> searchList = new ArrayList<>();
         for(Form form:formList) {
@@ -128,6 +129,7 @@ public class RegisFormFragment extends Fragment {
         adapter.changDataList(searchList);
     }
 
+    //Phương thức thay đổi list data theo trạng thái
     public void filterListStatus(String status) {
         ArrayList<Form> filterListStatus = new ArrayList<>();
         for(Form form:formList) {

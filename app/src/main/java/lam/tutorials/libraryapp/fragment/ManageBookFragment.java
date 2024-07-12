@@ -182,7 +182,6 @@ public class ManageBookFragment extends Fragment {
             dataRow.createCell(9).setCellValue(book.getAvailableForLoan());
             dataRow.createCell(10).setCellValue(book.getBorrowedQuantity());
             dataRow.createCell(11).setCellValue(book.getEnable());
-
         }
 
         try{

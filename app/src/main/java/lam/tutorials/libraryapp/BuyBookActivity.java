@@ -50,17 +50,14 @@ public class BuyBookActivity extends AppCompatActivity {
         binding.tvtBFaculty.setText("Ngành: " + book.getFaculty());
         binding.tvtBookPrice.setText("Giá: " + book.getPrice() + " VND");
 
+        //Khi thay đổi số lượng
         binding.editQuality.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 try {
@@ -69,14 +66,14 @@ public class BuyBookActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Thư viện không đủ số lượng sách bán", Toast.LENGTH_SHORT).show();
                     }else{
                         long total = quantity * book.getPrice();
-                        binding.editTotal.setText(String.valueOf(total));
+                        binding.textTotal.setText(String.valueOf(total));
                     }
                 }catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập số lượng hợp lệ", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
+        //Thêm đơn mua sách
         binding.btnBuyBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,12 +96,12 @@ public class BuyBookActivity extends AppCompatActivity {
                         bookDAO.updateBook(cbook);
                         long new_id = formDAO.insertForm(buyform);
                         if(new_id < 0) {
-                            Toast.makeText(getApplicationContext(), "Mua không thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Tạo đơn mua không thành công", Toast.LENGTH_SHORT).show();
                         }else {
                             Form newForm = formDAO.getFormByID(new_id);
                             newForm.setCode(newForm.getType()+"_"+newForm.getId());
                             formDAO.updateForm(newForm);
-                            Toast.makeText(getApplicationContext(), "Mua thành công", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Tạo đơn thành công", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }

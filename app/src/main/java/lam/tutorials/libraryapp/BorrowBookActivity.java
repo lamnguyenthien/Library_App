@@ -60,18 +60,17 @@ public class BorrowBookActivity extends AppCompatActivity {
         //binding.tvtBFaculty.setText("Ngành: " + book.getFaculty());
         binding.tvtBookPrice.setText("Giá: " + book.getPrice() + " VND");
 
+        //Chọn ngày trả sách
         binding.btnReturnDate.setOnClickListener( v -> {
             Calendar calender = Calendar.getInstance();
             int year = calender.get(Calendar.YEAR);
             int month = calender.get(Calendar.MONTH);
             int dayOfMonth = calender.get(Calendar.DAY_OF_MONTH);
-
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     (view, selectedYear, selectedMonth, selectedDayOfMonth) -> {
                         Calendar selectedDate = Calendar.getInstance();
                         selectedDate.set(selectedYear,selectedMonth,selectedDayOfMonth);
                         int day_of_week = selectedDate.get(Calendar.DAY_OF_WEEK);
-
                         if(selectedDate.getTimeInMillis() >= calender.getTimeInMillis()) {
                             if(day_of_week == 7 || day_of_week == 1) {
                                 Toast.makeText(getApplicationContext(), "Chọn ngày trả trong tuần",Toast.LENGTH_LONG).show();
@@ -88,17 +87,14 @@ public class BorrowBookActivity extends AppCompatActivity {
         });
 
 
+        //Sự kiện khi nhập số lượng
         binding.editQuality.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 try {
@@ -107,7 +103,7 @@ public class BorrowBookActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Thư viện không đủ số lượng sách", Toast.LENGTH_SHORT).show();
                     }else{
                         long total = quality * book.getPrice();
-                        binding.editTotal.setText(String.valueOf(total));
+                        binding.textTotal.setText(String.valueOf(total));
                     }
                 }catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập số lượng hợp lệ", Toast.LENGTH_SHORT).show();
@@ -115,6 +111,7 @@ public class BorrowBookActivity extends AppCompatActivity {
             }
         });
 
+        //Thêm đơn mượn
         binding.btnBorrowBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,10 +127,10 @@ public class BorrowBookActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Thư viện không đủ sách mượn", Toast.LENGTH_SHORT).show();
                         }else{
                             long total = quantity * cbook.getPrice();
+                            //Lấy ngày hiện ta
                             Date date = new Date();
                             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                             String currentDate = dateFormat.format(date);
-
                             Form borrowform = new Form(id_book, id_student,"", "BorrowForm", "Chờ nhận", currentDate, returnDate, quantity,total);
                             int stock = cbook.getAvailableForLoan() - quantity;
                             int borrow = cbook.getBorrowedQuantity() + quantity;
@@ -150,7 +147,6 @@ public class BorrowBookActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Đăng ký mượn thành công", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
-
                         }
                     }
                 }

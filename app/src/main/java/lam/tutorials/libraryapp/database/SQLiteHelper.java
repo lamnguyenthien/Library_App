@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import lam.tutorials.libraryapp.entity.Book;
+import lam.tutorials.libraryapp.entity.User;
+
 public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "qlythuvien";
     public static final int VERSION = 1;
@@ -20,6 +23,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(UserDAO.SQL_TAO_BANG_USER);
         db.execSQL(FormDAO.SQL_TAO_BANG_FORM);
         db.execSQL(BookDAO.SQL_TAO_BANG_BOOK);
+
+
     }
 
     @Override

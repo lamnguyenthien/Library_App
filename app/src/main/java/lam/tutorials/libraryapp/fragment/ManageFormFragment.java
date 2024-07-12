@@ -103,6 +103,7 @@ public class ManageFormFragment extends Fragment {
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinStatus.setAdapter(arrayAdapter);
 
+
         binding.spinStatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -114,7 +115,6 @@ public class ManageFormFragment extends Fragment {
                     filterListStatus(status);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -171,6 +171,7 @@ public class ManageFormFragment extends Fragment {
         });
     }
 
+    //Thay đổi list của adapter theo trạng thái
     public void filterListStatus(String status) {
         ArrayList<Form> filterListStatus = new ArrayList<>();
         for(Form form:borrowFormList) {
@@ -181,6 +182,7 @@ public class ManageFormFragment extends Fragment {
         adapter.changDataList(filterListStatus);
     }
 
+    //Thay đổi List hiển thị tìm kiếm theo mã
     private void searchListForm(String text) {
         ArrayList<Form> searchList = new ArrayList<>();
         if(fil == 1) {
@@ -205,6 +207,7 @@ public class ManageFormFragment extends Fragment {
         adapter.changDataList(searchList);
     }
 
+    //Xuất file excel
     private void exportToExcecl(List<Form> buyFormList, List<Form> borrowFormList) {
         //Lấy thời điểm hiện tại
         Date date = new Date();
@@ -215,21 +218,18 @@ public class ManageFormFragment extends Fragment {
         Workbook workbook = new XSSFWorkbook();
         Sheet buyFormSheet = workbook.createSheet("Buy Form");
         Sheet borrowFormSheet = workbook.createSheet("Borrow Form");
-
         Row headerRowBuy = buyFormSheet.createRow(0);
         String[] headers = {"Id", "Id_book", "Id_user","Ngày mua","Số lượng","Thành tiền"};
         for(int i = 0; i < headers.length; i++) {
             Cell headerCell = headerRowBuy.createCell(i);
             headerCell.setCellValue(headers[i]);
         }
-
         Row headerRowBorrow = borrowFormSheet.createRow(0);
         String[] headers2 = {"Id", "Id_book", "Id_user","Ngày đăng ký","Ngày trả","Số lượng", "Tiền ứng"};
         for(int i = 0; i < headers2.length;i++) {
             Cell headerCell = headerRowBorrow.createCell(i);
             headerCell.setCellValue(headers2[i]);
         }
-
         for(int i = 0; i < buyFormList.size(); i++) {
             Form form = buyFormList.get(i);
             Row dataRow = buyFormSheet.createRow(i+1);
@@ -240,7 +240,6 @@ public class ManageFormFragment extends Fragment {
             dataRow.createCell(4).setCellValue(form.getQuantity());
             dataRow.createCell(5).setCellValue(form.getTotal());
         }
-
         for(int i = 0; i < borrowFormList.size(); i++) {
             Form form = borrowFormList.get(i);
             Row dataRow = borrowFormSheet.createRow(i+1);
@@ -252,7 +251,6 @@ public class ManageFormFragment extends Fragment {
             dataRow.createCell(5).setCellValue(form.getQuantity());
             dataRow.createCell(6).setCellValue(form.getTotal());
         }
-
         try {
             File file = new File(getContext().getExternalFilesDir(null),"FormList_"+currentDate+ ".xlsx");
 

@@ -1,7 +1,9 @@
 package lam.tutorials.libraryapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -54,11 +56,30 @@ public class TeacherBookDetailActivity extends AppCompatActivity {
         binding.btnDeleteBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Book dBook = bookDAO.getBookByID(id_book);;
-                dBook.setEnable(0);
-                bookDAO.updateBook(dBook);
-                Toast.makeText(getApplicationContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(TeacherBookDetailActivity.this);
+                builder.setTitle("Xác nhận xóa");
+                builder.setMessage("Bạn có chắc chắn muốn xóa sản phẩm này?");
+
+                builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Book dBook = bookDAO.getBookByID(id_book);;
+                        dBook.setEnable(0);
+                        bookDAO.updateBook(dBook);
+                        Toast.makeText(getApplicationContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Đóng dialog
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 

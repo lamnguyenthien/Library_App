@@ -5,12 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BorrowBookActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +19,6 @@
             android:textAlignment="center"
             android:textColor="@color/lavender"
             android:textStyle="bold"/>
-
         <TextView
             android:id="@+id/tvt_stu_name"
             android:layout_width="match_parent"
@@ -31,7 +28,6 @@
             android:layout_margin="10dp"
             android:padding="5dp"
             android:textSize="20dp"/>
-
         <TextView
             android:id="@+id/tvt_stu_code"
             android:layout_width="match_parent"
@@ -50,7 +46,6 @@
             android:layout_margin="10dp"
             android:padding="5dp"
             android:textSize="20dp"/>
-
         <TextView
             android:id="@+id/tvt_b_author"
             android:layout_width="match_parent"
@@ -60,13 +55,11 @@
             android:layout_margin="10dp"
             android:padding="5dp"
             android:textSize="20dp"/>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="3"
             android:layout_marginTop="10dp">
-
             <TextView
                 android:id="@+id/tvt_b_publish_comp"
                 android:layout_width="0dp"
@@ -77,7 +70,6 @@
                 android:layout_margin="10dp"
                 android:padding="5dp"
                 android:textSize="20dp"/>
-
             <TextView
                 android:id="@+id/tvt_b_publish_year"
                 android:layout_width="0dp"
@@ -89,13 +81,11 @@
                 android:padding="5dp"
                 android:textSize="20dp"/>
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:weightSum="3">
-
             <TextView
                 android:id="@+id/tvt_book_price"
                 android:layout_width="0dp"
@@ -104,7 +94,6 @@
                 android:text="Giá: VND"
                 android:textColor="@color/lavender"
                 android:textSize="20dp"/>
-
             <TextView
                 android:id="@+id/tvt_quality"
                 android:layout_width="0dp"
@@ -113,7 +102,6 @@
                 android:text="Số lượng: "
                 android:textColor="@color/lavender"
                 android:textSize="20dp"/>
-
             <EditText
                 android:id="@+id/edit_quality"
                 android:layout_width="0dp"
@@ -123,13 +111,11 @@
                 android:paddingLeft="15dp"
                 android:background="@drawable/lavender_border"/>
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:weightSum="3">
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -137,16 +123,14 @@
                 android:text="Tiền ứng: "
                 android:textColor="@color/lavender"
                 android:textSize="20dp"/>
-
-            <EditText
-                android:id="@+id/edit_total"
+            <TextView
+                android:id="@+id/text_total"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1.5"
-                android:background="@drawable/lavender_border"
-                android:paddingLeft="15dp"
-                android:inputType="none"/>
-
+                android:text=""
+                android:textColor="@color/lavender"
+                android:textSize="20dp"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -156,16 +140,12 @@
                 android:textColor="@color/lavender"
                 android:textSize="20dp"
                 />
-
-
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2"
             android:layout_marginTop="10dp">
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -173,7 +153,6 @@
                 android:text="Đăng ký ngày trả: "
                 android:textColor="@color/lavender"
                 android:textSize="20dp"/>
-
             <Button
                 android:id="@+id/btn_return_date"
                 android:layout_width="0dp"
@@ -183,13 +162,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="5dp"/>
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="2"
             android:layout_marginTop="10dp">
-
             <Button
                 android:id="@+id/btnBorrowBook"
                 android:layout_width="0dp"
@@ -198,7 +175,6 @@
                 android:text="Mượn sách"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="5dp"/>
-
             <Button
                 android:id="@+id/btnCancel"
                 android:layout_width="0dp"
@@ -209,5 +185,4 @@
                 android:layout_marginLeft="5dp"/>
         </TableRow>
     </LinearLayout>
-
 </ScrollView>
